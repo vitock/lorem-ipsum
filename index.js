@@ -19,7 +19,7 @@
     console.log("Total",ArrFreq.length)
  
     function getChar(){
-        var c =  randInt(Total) % Total
+        var c =  randInt(Total) 
         const Count = ArrFreq.length
         for (let i = 0; i < Count; i++) {
             c -= ArrFreq[i].freq
@@ -45,9 +45,7 @@
 
 
     function randInt(max){
-
-        return crypto.getRandomValues(new Uint32Array(1))[0] % (max + 1)
-        
+        return crypto.getRandomValues(new Uint32Array(1))[0] % (max )
     }
 
     function genArticle(len,outsize){
@@ -72,7 +70,7 @@
 
             sentenceCount += 1
             if(sentenceCount > 1){
-                if (randInt(1) == 1 && isEnd ){
+                if (randInt(2) == 1 && isEnd ){
                     result += "\n"
                     sentenceCount = 0;
                 }
@@ -93,7 +91,6 @@
         for (var i = 0; i < radios.length; i++) {
             if (radios[i].checked) {
                 return radios[i].value
-              break;
             }
         }
         return ""
