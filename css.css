@@ -4,15 +4,15 @@ common style
 
 body {
     margin: 0;
-    padding: 0;
     font-size: 18px;
-    font-family: "微软雅黑";
+    background-color: #f0f0f0;
 }
 .container {
+    padding: 2em;
     width: 960px;
     margin: 0px auto;
     /* border: solid red 1px; */
-    padding: 10px;
+    background-color: #fff;
 }
 
 section {

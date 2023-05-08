@@ -43,7 +43,6 @@ var result = keys.map((e,i)=>{
     return {c :e ,f:map[e]}
 })
 
-fs.writeFileSync("frequency.json",JSON.stringify(result,null,"\t"))
 
 fs.writeFileSync("frequency.txt", resultStr)
 

@@ -50,7 +50,7 @@
         
     }
 
-    function genArticle(len){
+    function genArticle(len,outsize){
         var current = 0
         var result = ""
 
@@ -58,10 +58,11 @@
         while (1) {
             const newStr = randStr();
             if(newStr.length + current > len){
+                outsize.count = current;
+                console.log("实际",current)
                 result += "。"
                 return result
             }
-
 
             var isEnd =  0 
             if(sentenceCount > 0){
@@ -81,9 +82,6 @@
             result += newStr;
             current += newStr.length
 
-            
-
-
         }
 
         return result
@@ -101,7 +99,7 @@
         return ""
     }
 
-    document.getElementById("generate-btn").onclick = function(){
+    function genBtnClick(){
 
         var type = getValue("radom-text-style")
         var size = getValue("radom-text-size")
@@ -112,27 +110,34 @@
 
         var nSize = parseInt(size)
 
+        console.log("目标",nSize)
+        var outsize = {}
         var content = ""
         if(type == "rich-radom-text"){
-            content = genArticle(nSize)
+            content = genArticle(nSize,outsize)
         }else{
             content = getStr(nSize)
+            outsize.count = nSize
         }
-        console.log(nSize)
+        
 
         var arr = content.split("\n")
 
         
+        var counter = `<b>实际字数:${outsize.count}</b>`
+
         var arrP = arr.map(function(e){
 
             return "<p>" + e + "</p>"
         })
 
-        document.getElementById("generated-radom-text").innerHTML = arrP.join("")
+        document.getElementById("generated-radom-text").innerHTML = counter + arrP.join("")
        
 
 
     }
 
+    document.getElementById("generate-btn").onclick = genBtnClick
+ 
     
 }()

@@ -6,5 +6,8 @@
 >
 > 运行 `node tool.js ` 会生成字频
 
-# 协议 AGPL
+# 许可协议 AGPL
+
+
+https://www.gnu.org/licenses/agpl-3.0.en.html
 
