@@ -44,7 +44,7 @@ var result = keys.map((e,i)=>{
 })
 
 
-fs.writeFileSync("frequency.txt", resultStr)
+fs.writeFileSync("frequency.txt", resultStr.split(" ").join("\n"))
 
 fs.writeFileSync("frequency.js",  `window["_STRINGS_"] = "${resultStr}"`)
 
