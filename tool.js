@@ -1,7 +1,17 @@
 const fs = require("fs")
 
 /// 天龙八部 倚天屠龙记 楚留香
-var txt = fs.readFileSync("source.txt").toString()
+
+let arr = fs.readdirSync("source")
+
+let arr2 = arr.map(e=>{
+    if(e.substring(e.length - 5) == "1.txt"){
+        return fs.readFileSync("source/" + e).toString()
+    }
+    return ""
+})
+
+var txt =  arr2.join("")
 
  
 // 统计频率
