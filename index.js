@@ -3,6 +3,8 @@
 !function(){
     var _Text = window['_STRINGS_']
 
+    var _RESULT_ = ''
+
     var _arr1 = _Text.split(" ")
 
     var Total = 0
@@ -54,7 +56,14 @@
 
         var sentenceCount = 0;
         while (1) {
-            const newStr = randStr();
+
+            if(len - current >= 5 && len - current < 25){
+                newStr = getStr(len - current);
+            }else{
+                newStr = randStr();
+            }
+
+            
             if(newStr.length + current > len){
                 outsize.count = current;
                 console.log("实际",current)
@@ -128,13 +137,25 @@
             return "<p>" + e + "</p>"
         })
 
+        _RESULT_ = content;
         document.getElementById("generated-radom-text").innerHTML = counter + arrP.join("")
-       
-
-
     }
 
+    function copyclick(){
+        navigator.clipboard.writeText(_RESULT_).then(function(a){
+
+            document.getElementById('copy-btn').innerText = '拷贝成功'
+            setTimeout(() => {
+                document.getElementById('copy-btn').innerText = '拷贝文本'
+            }, 1000);
+
+        }).catch(function(e){
+            alert(e)
+        })
+    }
     document.getElementById("generate-btn").onclick = genBtnClick
+
+    document.getElementById('copy-btn').onclick = copyclick
  
     
 }()
